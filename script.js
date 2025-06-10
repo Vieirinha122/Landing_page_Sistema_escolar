@@ -230,3 +230,23 @@ document.addEventListener("DOMContentLoaded", function () {
       observer.observe(el);
     });
 });
+// Carrossel de texto
+const textSlides = document.querySelectorAll(".carousel-item");
+let currentTextIndex = 0;
+
+function showTextSlide(index) {
+  textSlides.forEach((item, i) => {
+    item.classList.remove("active");
+    if (i === index) {
+      item.classList.add("active");
+    }
+  });
+}
+
+setInterval(() => {
+  currentTextIndex = (currentTextIndex + 1) % textSlides.length;
+  showTextSlide(currentTextIndex);
+}, 4000);
+
+// Mostrar o primeiro texto inicialmente
+showTextSlide(0);
