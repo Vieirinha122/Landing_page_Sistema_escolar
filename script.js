@@ -4,12 +4,10 @@ const backgroundSlides = document.querySelectorAll(".background-slide");
 let current = 0;
 
 function goToSlide(i) {
-  // Remove active class from all slides, dots, and background slides
   slides.forEach((s) => s.classList.remove("active"));
   dots.forEach((d) => d.classList.remove("active"));
   backgroundSlides.forEach((bg) => bg.classList.remove("active"));
 
-  // Add active class to current slide, dot, and background slide
   slides[i].classList.add("active");
   dots[i].classList.add("active");
   backgroundSlides[i].classList.add("active");
@@ -26,17 +24,14 @@ setInterval(() => {
   goToSlide(next);
 }, 4000);
 
-// Initialize first slide
 goToSlide(0);
 
-// Contador regressivo (Escassez)
 function updateCountdown() {
   const countdownElement = document.getElementById("countdown");
   if (!countdownElement) return;
 
-  // Simula um countdown de 48 horas
   const now = new Date().getTime();
-  const endTime = now + 48 * 60 * 60 * 1000; // 48 horas a partir de agora
+  const endTime = now + 48 * 60 * 60 * 1000;
 
   function updateTimer() {
     const currentTime = new Date().getTime();
@@ -61,7 +56,6 @@ function updateCountdown() {
   setInterval(updateTimer, 1000);
 }
 
-// Animação de números (Prova Social)
 function animateNumbers() {
   const numbers = document.querySelectorAll(".proof-item .number");
 
@@ -94,7 +88,6 @@ function animateNumbers() {
   });
 }
 
-// Efeito de scroll suave para os números
 function handleScrollAnimations() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -115,8 +108,6 @@ function handleScrollAnimations() {
     observer.observe(socialProofSection);
   }
 }
-
-// Formulário de contato com validação
 function setupContactForm() {
   const form = document.querySelector(".contact-form");
   if (!form) return;
@@ -124,7 +115,6 @@ function setupContactForm() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Validação básica
     const requiredFields = form.querySelectorAll("[required]");
     let isValid = true;
 
@@ -138,7 +128,6 @@ function setupContactForm() {
     });
 
     if (isValid) {
-      // Simula envio do formulário
       const submitBtn = form.querySelector(".contact-btn");
       const originalText = submitBtn.innerHTML;
 
@@ -159,7 +148,6 @@ function setupContactForm() {
   });
 }
 
-// Efeitos de hover nos cards de preços
 function setupPricingCards() {
   const pricingCards = document.querySelectorAll(".pricing-card");
 
@@ -178,14 +166,13 @@ function setupPricingCards() {
   });
 }
 
-// Scroll suave para âncoras
 function setupSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute("href"));
       if (target) {
-        const headerHeight = document.querySelector("header").offsetHeight + 60; // Inclui a barra de urgência
+        const headerHeight = document.querySelector("header").offsetHeight + 60; 
         const targetPosition = target.offsetTop - headerHeight;
 
         window.scrollTo({
@@ -197,7 +184,6 @@ function setupSmoothScroll() {
   });
 }
 
-// Inicialização quando o DOM estiver carregado
 document.addEventListener("DOMContentLoaded", function () {
   updateCountdown();
   handleScrollAnimations();
@@ -205,7 +191,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupPricingCards();
   setupSmoothScroll();
 
-  // Adiciona classe para animações CSS quando elementos entram na viewport
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -220,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, observerOptions);
 
-  // Observa elementos para animação de entrada
   document
     .querySelectorAll(".card, .testimonial-card, .pricing-card")
     .forEach((el) => {
@@ -230,3 +214,21 @@ document.addEventListener("DOMContentLoaded", function () {
       observer.observe(el);
     });
 });
+const textSlides = document.querySelectorAll(".carousel-item");
+let currentTextIndex = 0;
+
+function showTextSlide(index) {
+  textSlides.forEach((item, i) => {
+    item.classList.remove("active");
+    if (i === index) {
+      item.classList.add("active");
+    }
+  });
+}
+
+setInterval(() => {
+  currentTextIndex = (currentTextIndex + 1) % textSlides.length;
+  showTextSlide(currentTextIndex);
+}, 4000);
+
+showTextSlide(0);

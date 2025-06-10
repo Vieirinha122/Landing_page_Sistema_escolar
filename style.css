@@ -10,7 +10,7 @@ body {
   background: #fefefe;
   line-height: 1.6;
   scroll-behavior: smooth;
-  padding-top: 0; /* Ajustado após remoção da barra de urgência */
+  padding-top: 0; 
 }
 
 header {
@@ -110,7 +110,7 @@ nav a:hover {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Oferta Gratuita (Reciprocidade) */
+
 .free-offer {
   background: linear-gradient(135deg, #10b981, #059669);
   color: white;
@@ -148,7 +148,6 @@ nav a:hover {
   }
 }
 
-/* Prova Social - Números */
 .social-proof-numbers {
   display: flex;
   justify-content: center;
@@ -177,13 +176,16 @@ nav a:hover {
 }
 
 .slider-nav {
+  position: absolute;
+  bottom: 30px; 
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 2rem 0;
-  z-index: 2;
-  position: relative;
+  z-index: 3; 
 }
+
 
 .dot {
   width: 12px;
@@ -279,7 +281,6 @@ nav a:hover {
   line-height: 1.6;
 }
 
-/* Seção de Depoimentos Expandida */
 .testimonials-section {
   background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
   padding: 5rem 2rem;
@@ -375,7 +376,6 @@ blockquote {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Seção de Preços com Ancoragem */
 .pricing-section {
   background: linear-gradient(135deg, #1e3a8a, #3b82f6);
   color: white;
@@ -521,7 +521,7 @@ blockquote {
   font-size: 2rem;
 }
 
-/* Seção de Contato Melhorada */
+
 .contact {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
@@ -677,15 +677,14 @@ footer {
   color: #94a3b8;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   body {
-    padding-top: 100px; /* Reduz padding no mobile */
+    padding-top: 100px; 
   }
 
   .hero {
-    margin-top: -100px; /* Ajusta margem no mobile */
-    padding-top: 100px; /* Ajusta padding no mobile */
+    margin-top: -100px; 
+    padding-top: 100px; 
   }
 
   .urgency-content {
@@ -742,4 +741,45 @@ footer {
   .footer-trust {
     gap: 1rem;
   }
+}
+.text-carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 90%;
+  max-width: 800px;
+  min-height: 160px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: none; 
+}
+
+.carousel-item {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.text-carousel h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.text-carousel p {
+  font-size: 1.125rem;
+  font-weight: 400;
 }
